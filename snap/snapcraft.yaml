@@ -30,7 +30,6 @@ apps:
 
 parts:
   cmus:
-    # See 'snapcraft plugins'
     plugin: make
     source: https://github.com/cmus/cmus.git
     build-packages:
@@ -57,15 +56,14 @@ parts:
       - libavformat-dev 
       - libavcodec-dev
       - libfaad-dev
-      # - libmp4v2-dev
       - libmodplug-dev
       - libmikmod2-dev
-        # up built
       - libsndio-dev
       - libdiscid-dev
       - libopusfile-dev
       - libsystemd-dev
     override-build: |
+      sudo apt instal libdiscid0
       ./configure
       make 
       make install DESTDIR=$SNAPCRAFT_PART_INSTALL
